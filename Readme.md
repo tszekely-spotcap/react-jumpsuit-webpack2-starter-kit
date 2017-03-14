@@ -1,17 +1,15 @@
-# Budgeting - React + Redux Sample App
+# React + Jumpsuit + Webpack2 Starter Kit
 
-Sample app demonstrating the power and simplicity of React, Redux, and Webpack 2. Includes tree shaking configuration. 
-
-This is a Webpack 2 version of a previous [Budgeting App](https://github.com/ModusCreateOrg/budgeting-sample-app).
+This is a fork of [Budgeting](https://github.com/ModusCreateOrg/budgeting-sample-app-webpack2), adjusted to my taste.
 
 ## Contains
 
 - [x] [Webpack 2.2](https://webpack.github.io)
 - [x] [React](https://facebook.github.io/react/)
-- [x] [Redux](http://redux.js.org/)
+- [x] [Jumpsuit](https://jumpsuit.js.org/)
 - [x] [Babel](https://babeljs.io/)
 
-Make sure you have the latest node before using Webpack 2. Some depenencies my fail in older versions. 
+Make sure you have the latest node before using Webpack 2. Some depenencies my fail in older versions.
 
 **Update 01/23/2017:** Bumped to Webpack 2.2 and React 15.4.2 with updates to webpack and babel config. Webpack's performance hints are on for production (`npm run prod`)
 
