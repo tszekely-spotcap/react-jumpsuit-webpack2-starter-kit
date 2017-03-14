@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 const sourcePath = path.join(__dirname, './client');
 const staticsPath = path.join(__dirname, './static');
@@ -46,7 +47,8 @@ module.exports = function (env) {
     );
   } else {
     plugins.push(
-      new webpack.HotModuleReplacementPlugin()
+      new webpack.HotModuleReplacementPlugin(),
+      new OpenBrowserPlugin({ url: 'http://localhost:3000' })
     );
   }
 
@@ -74,12 +76,21 @@ module.exports = function (env) {
           },
         },
         {
-          test: /\.css$/,
+          test: /\.(css|less)$/,
           exclude: /node_modules/,
-          use: [
-            'style-loader',
-            'css-loader'
-          ]
+          use: isProd ?
+            [] :
+            [
+              'style-loader',
+              'css-loader',
+              {
+                loader: 'less-loader',
+                options: {
+                  strictMath: true,
+                  noIeCompat: true
+                }
+              }
+            ]
         },
         {
           test: /\.(js|jsx)$/,
@@ -101,8 +112,8 @@ module.exports = function (env) {
     plugins,
 
     performance: isProd && {
-      maxAssetSize: 100,
-      maxEntrypointSize: 300,
+      maxAssetSize: 1024000,
+      maxEntrypointSize: 3072000,
       hints: 'warning',
     },
 
