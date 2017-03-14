@@ -1,6 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const sourcePath = path.join(__dirname, './client');
 const staticsPath = path.join(__dirname, './static');
@@ -13,12 +15,16 @@ module.exports = function (env) {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: Infinity,
-      filename: 'vendor.bundle.js'
+      filename: isProd ? 'vendor.[hash].js' : 'vendor.js'
     }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: nodeEnv,
     }),
     new webpack.NamedModulesPlugin(),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: path.resolve('client/index.html')
+    })
   ];
 
   if (isProd) {
@@ -43,7 +49,8 @@ module.exports = function (env) {
         output: {
           comments: false,
         },
-      })
+      }),
+      new ExtractTextPlugin('/styles.[hash].css')
     );
   } else {
     plugins.push(
@@ -61,25 +68,37 @@ module.exports = function (env) {
     },
     output: {
       path: staticsPath,
-      filename: '[name].bundle.js',
+      filename: isProd ? 'scripts.[hash].js' : 'scripts.js',
+      publicPath: '/'
     },
     module: {
       rules: [
-        {
-          test: /\.html$/,
-          exclude: /node_modules/,
-          use: {
-            loader: 'file-loader',
-            query: {
-              name: '[name].[ext]'
-            },
-          },
-        },
+        // {
+        //   test: /\.html$/,
+        //   exclude: /node_modules/,
+        //   use: {
+        //     loader: 'file-loader',
+        //     query: {
+        //       name: '[name].[ext]'
+        //     },
+        //   },
+        // },
         {
           test: /\.(css|less)$/,
           exclude: /node_modules/,
           use: isProd ?
-            [] :
+            ExtractTextPlugin.extract({
+              use: [
+                'css-loader',
+                {
+                  loader: 'less-loader',
+                  options: {
+                    strictMath: true,
+                    noIeCompat: true
+                  }
+                }
+              ]
+            }) :
             [
               'style-loader',
               'css-loader',

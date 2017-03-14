@@ -6,8 +6,6 @@ import AppState from 'states/AppState';
 import App from 'components/App';
 import Home from 'components/Home';
 
-import 'index.html';
-
 import './index.less';
 
 const globalState = {

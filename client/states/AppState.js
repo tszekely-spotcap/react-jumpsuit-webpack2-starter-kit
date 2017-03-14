@@ -16,7 +16,7 @@ const AppState = State({
   setImage(state) {
     return {
       ...state,
-      image: `https://unsplash.it/1280/720?image=${Math.floor(Math.random() * (1401)) + 1400}`
+      image: `https://unsplash.it/1280/720?image=${Math.floor(Math.random() * (1200))}`
     }
   }
 });
