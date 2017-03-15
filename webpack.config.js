@@ -127,11 +127,11 @@ module.exports = function (env) {
       modules: [
         path.resolve(__dirname, 'node_modules'),
         sourcePath
-      ]
-      // ,
-      // alias: {
-      //   jumpsuit: 'jumpsuit/lib/index'
-      // }
+      ],
+      alias: {
+        'react': 'preact-compat',
+        'react-dom': 'preact-compat'
+      }
     },
 
     plugins,
