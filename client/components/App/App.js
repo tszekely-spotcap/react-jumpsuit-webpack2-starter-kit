@@ -1,5 +1,6 @@
 import React from 'react';
-import { Component } from 'jumpsuit';
+// import { Component } from 'jumpsuit';
+import Component from 'jumpsuit/lib/component';
 
 import './App.less';
 

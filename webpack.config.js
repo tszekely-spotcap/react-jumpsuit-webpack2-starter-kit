@@ -3,6 +3,7 @@ const path = require('path');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const sourcePath = path.join(__dirname, './client');
 const staticsPath = path.join(__dirname, './static');
@@ -50,7 +51,8 @@ module.exports = function (env) {
           comments: false,
         },
       }),
-      new ExtractTextPlugin('/styles.[hash].css')
+      new ExtractTextPlugin('styles.[hash].css'),
+      new BundleAnalyzerPlugin()
     );
   } else {
     plugins.push(
@@ -126,6 +128,10 @@ module.exports = function (env) {
         path.resolve(__dirname, 'node_modules'),
         sourcePath
       ]
+      // ,
+      // alias: {
+      //   jumpsuit: 'jumpsuit/lib/index'
+      // }
     },
 
     plugins,

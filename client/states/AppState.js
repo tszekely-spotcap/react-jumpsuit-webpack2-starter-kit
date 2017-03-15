@@ -1,4 +1,5 @@
-import { State } from 'jumpsuit';
+// import { State } from 'jumpsuit';
+import { State } from 'jumpstate'
 
 const AppState = State({
   initial: {

@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { Component, Actions } from 'jumpsuit';
+// import { Component, Actions } from 'jumpsuit';
+import Component from 'jumpsuit/lib/component';
+import { Actions } from 'jumpstate';
 
 import './Home.less';
 

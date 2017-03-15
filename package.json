@@ -1,8 +1,8 @@
 {
-  "name": "webpack2-react-redux-budget-app-sample",
+  "name": "react-jumpsuit-webpack2-starter-kit",
   "version": "1.0.0",
   "private": true,
-  "description": "Budgeting App Sample - React, Redux, Webpack 2",
+  "description": "A solid starting point with React, Jumpsuit and Webpack2.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -43,6 +43,7 @@
     "html-webpack-plugin": "^2.28.0",
     "jumpsuit": "^2.1.2",
     "react": "15.4.2",
-    "react-dom": "15.4.2"
+    "react-dom": "15.4.2",
+    "webpack-bundle-analyzer": "^2.3.1"
   }
 }
