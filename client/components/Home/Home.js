@@ -4,7 +4,7 @@ import React from 'react';
 import Component from 'jumpsuit/lib/component';
 import { Actions } from 'jumpstate';
 
-import './Home.less';
+// import './Home.less';
 
 const Home = Component({
   render() {
